@@ -1,0 +1,139 @@
+@import "src/global_variables.scss";
+
+
+a {
+  text-decoration: none;
+  color: $black;
+}
+
+nav {
+  ul {
+    margin-top: 2em;
+
+    display: flex;
+    flex-direction: row;
+  }
+
+  li {
+    font-size: 36px;
+    font-weight: bold;
+
+    list-style-type: none;
+    margin-right: 5vw;
+
+    &:first-of-type {
+      margin-right: auto;
+      margin-left: 10%;
+    }
+  }
+}
+.nav_item {
+  position: relative;
+
+  color: rgba(0, 0, 0, 0.56);
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+
+    width: 0;
+    height: 2px;
+
+    background: $black;
+    display: block;
+  }
+
+  &:hover,
+  &:focus {
+    color: $black;
+
+    &::after {
+      width: 100%;
+      transition: width ease-in-out 200ms;
+    }
+
+  }
+}
+
+
+#landing {
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 20vh;
+
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+#landing svg {
+  height: 60vh;
+  width: 60vh
+}
+
+#content {
+  padding-top: 5%;
+  margin-right: auto;
+}
+
+h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bolder;
+  color: $warning;
+}
+
+h1 {
+  margin: 0;
+  font-size: 144px;
+}
+
+#button-group{
+  margin-top: 50px;
+
+  display: flex;
+}
+
+.create_button {
+  background-color: $warning;
+  border-radius: 30px;
+
+  padding: 20px 60px;
+  margin-right: 2em;
+
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+
+  &:focus,
+  &:hover {
+    background-color: darken($warning, 10);
+    transition: background-color ease-in-out 100ms;
+  }
+}
+
+.learn_more_button {
+  border-color: $warning;
+  border-radius: 30px;
+  border-width: 4px;
+  border-style: solid;
+  //box-sizing: border-box;
+
+  padding: 20px 60px;
+  margin-right: 2em;
+
+  color: $warning;
+  font-size: 24px;
+  font-weight: bold;
+
+
+  &:focus,
+  &:hover {
+    background-color: lighten($warning, 10);
+    border-color: lighten($warning, 10);
+
+    color: white;
+    transition: background-color ease-in-out 100ms;
+  }
+}
