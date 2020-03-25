@@ -1,0 +1,19 @@
+@import "src/global_variables.scss";
+
+nav {
+  display: flex;
+  justify-content: center;
+
+  background-color: $main-gray;
+  height: 3vw;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+
+  font-size: 36px;
+  font-weight: bold;
+
+  align-self: center;
+}
