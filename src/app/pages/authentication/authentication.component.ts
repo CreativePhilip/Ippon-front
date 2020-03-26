@@ -1,4 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Store} from "@ngrx/store";
+import {AuthState} from "../../state-management/auth.state";
+import * as AuthActions from "../../state-management/auth.actions"
+import {AuthModel} from "../../models/auth/auth.model";
 
 @Component({
   selector: 'app-authentication',
@@ -12,7 +16,12 @@ export class AuthenticationComponent implements OnInit {
   @ViewChild('loginForm', {static: false}) loginForm;
   @ViewChild('registrationForm', {static: false}) registrationForm;
 
-  constructor() { }
+
+  auth:AuthModel;
+  constructor(private store: Store<AuthState>) {
+    store.select('auth')
+      .subscribe(value => this.auth = value);
+  }
 
   ngOnInit() {
   }

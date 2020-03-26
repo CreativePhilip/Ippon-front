@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {NgModule} from "@angular/core";
+import { StoreModule } from "@ngrx/store";
+import { authReducer } from "./state-management/auth.reducer";
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -27,6 +29,10 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
   ],
   imports: [
     BrowserModule,
+    StoreModule.forRoot({
+      auth: authReducer
+    }),
+
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSliderModule,
