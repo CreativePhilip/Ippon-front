@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 * {
   font-family: 'Roboto', serif;
@@ -7,7 +7,9 @@
   padding: 0;
 }
 
+
 body {
   background: linear-gradient(90deg, #FFFBFB 0%, #D1D1D1 100%);
 }
+
 
