@@ -1,0 +1,68 @@
+@import "src/global_variables.scss";
+
+a {
+  text-decoration: none;
+  color: $black;
+}
+
+.option-selection {
+  display: flex;
+  justify-content: center;
+
+  a {
+    margin: 2em 2.5em;
+    font-size: 24px;
+    color: $black;
+  }
+}
+
+.active-link {
+  position: relative;
+  display: block;
+
+  &::after {
+    content: "";
+    background-color: $warning;
+
+    display: block;
+    width: 100%;
+    height: 3px;
+    position: absolute;
+
+    left: 0;
+    bottom: -3px;
+
+    animation-name: selectedOption;
+    animation-duration: 200ms;
+  }
+}
+
+@keyframes selectedOption {
+  from { width: 0;}
+  to { width: 100%;}
+}
+
+
+.authSection {
+  margin: 0 15vw;
+  padding: 5vh 10vw;
+  background-color: white;
+
+  border-color: $black;
+  border-width: 2px;
+  border-style: solid;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.notActive {
+  display: none;
+  height: 0;
+}
+
+.inputElement {
+  width: 100%;
+}
