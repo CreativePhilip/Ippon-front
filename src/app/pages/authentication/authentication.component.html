@@ -7,88 +7,93 @@
   </div>
 
   <div class="authSection">
-    <div #loginForm class="loginForm ">
-      <mat-form-field class="inputElement">
-        <mat-label>E-mail address</mat-label>
-        <input matInput>
-      </mat-form-field>
+    <form [formGroup]="loginForm" role="form" (ngSubmit)="login()">
+      <div #loginFormDiv class="loginForm ">
+        <mat-form-field class="inputElement">
+          <mat-label>E-mail address</mat-label>
+          <input type="email" formControlName="email" matInput>
+          <mat-error *ngIf="hasError('email', 'required')">Email address is required</mat-error>
+        </mat-form-field>
 
-      <mat-form-field class="inputElement">
-        <mat-label>Password</mat-label>
-        <input type="password" matInput>
-      </mat-form-field>
-      <button color="accent" mat-raised-button>Login</button>
-    </div>
+        <mat-form-field class="inputElement">
+          <mat-label>Password</mat-label>
+          <input type="password" formControlName="password" matInput>
+          <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
+        </mat-form-field>
+        <button color="accent" mat-raised-button>Login</button>
+      </div>
+    </form>
 
-    <div #registrationForm class="registrationForm notActive">
-      <mat-form-field class="inputElement">
-        <mat-label>First Name</mat-label>
-        <input matInput>
-      </mat-form-field>
+    <form>
+      <div #registrationFormDiv class="registrationForm notActive">
+        <mat-form-field class="inputElement">
+          <mat-label>First Name</mat-label>
+          <input matInput>
+        </mat-form-field>
 
-      <mat-form-field class="inputElement">
-        <mat-label>Last Name</mat-label>
-        <input matInput>
-      </mat-form-field>
+        <mat-form-field class="inputElement">
+          <mat-label>Last Name</mat-label>
+          <input matInput>
+        </mat-form-field>
 
-      <mat-form-field class="inputElement">
-        <mat-label>E-mail address</mat-label>
-        <input matInput>
-      </mat-form-field>
+        <mat-form-field class="inputElement">
+          <mat-label>E-mail address</mat-label>
+          <input matInput>
+        </mat-form-field>
 
-      <hr style="height: 1px; background-color: black; margin: 0 30%">
+        <hr style="height: 1px; background-color: black; margin: 0 30%">
 
-      <mat-form-field class="inputElement">
-        <mat-label>Password</mat-label>
-        <input matInput type="password">
-      </mat-form-field>
+        <mat-form-field class="inputElement">
+          <mat-label>Password</mat-label>
+          <input matInput type="password">
+        </mat-form-field>
 
-      <mat-form-field class="inputElement">
-        <mat-label>Repeat password</mat-label>
-        <input matInput type="password">
-      </mat-form-field>
+        <mat-form-field class="inputElement">
+          <mat-label>Repeat password</mat-label>
+          <input matInput type="password">
+        </mat-form-field>
 
-      <hr style="height: 1px; background-color: #707070; margin: 0 30%">
+        <hr style="height: 1px; background-color: #707070; margin: 0 30%">
 
-      <mat-form-field class="inputElement">
-        <mat-label>Rank</mat-label>
-        <mat-select>
-          <mat-option value="Unranked"> Unranked </mat-option>
-          <mat-option value="8th Kyu"> 8th Kyu </mat-option>
-          <mat-option value="7th Kyu"> 7th Kyu </mat-option>
-          <mat-option value="6th Kyu"> 6th Kyu </mat-option>
-          <mat-option value="5th Kyu"> 5th Kyu </mat-option>
-          <mat-option value="4th Kyu"> 4th Kyu </mat-option>
-          <mat-option value="3rd Kyu"> 3rd Kyu </mat-option>
-          <mat-option value="2nd Kyu"> 2nd Kyu </mat-option>
-          <mat-option value="1st Kyu"> 1st Kyu </mat-option>
-          <mat-option value="1st Dan"> 1st Dan </mat-option>
-          <mat-option value="2nd Dan"> 2nd Dan </mat-option>
-          <mat-option value="3rd Dan"> 3rd Dan </mat-option>
-          <mat-option value="4th Dan"> 4th Dan </mat-option>
-          <mat-option value="5th Dan"> 5th Dan </mat-option>
-          <mat-option value="6th Dan"> 6th Dan </mat-option>
-          <mat-option value="7th Dan"> 7th Dan </mat-option>
-          <mat-option value="8th Dan"> 8th Dan </mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field class="inputElement">
+          <mat-label>Rank</mat-label>
+          <mat-select>
+            <mat-option value="Unranked"> Unranked </mat-option>
+            <mat-option value="8th Kyu"> 8th Kyu </mat-option>
+            <mat-option value="7th Kyu"> 7th Kyu </mat-option>
+            <mat-option value="6th Kyu"> 6th Kyu </mat-option>
+            <mat-option value="5th Kyu"> 5th Kyu </mat-option>
+            <mat-option value="4th Kyu"> 4th Kyu </mat-option>
+            <mat-option value="3rd Kyu"> 3rd Kyu </mat-option>
+            <mat-option value="2nd Kyu"> 2nd Kyu </mat-option>
+            <mat-option value="1st Kyu"> 1st Kyu </mat-option>
+            <mat-option value="1st Dan"> 1st Dan </mat-option>
+            <mat-option value="2nd Dan"> 2nd Dan </mat-option>
+            <mat-option value="3rd Dan"> 3rd Dan </mat-option>
+            <mat-option value="4th Dan"> 4th Dan </mat-option>
+            <mat-option value="5th Dan"> 5th Dan </mat-option>
+            <mat-option value="6th Dan"> 6th Dan </mat-option>
+            <mat-option value="7th Dan"> 7th Dan </mat-option>
+            <mat-option value="8th Dan"> 8th Dan </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field class="inputElement">
-        <mat-label>Club</mat-label>
-        <mat-select>
-          <mat-option value="To be added soon :D"> To be added soon :D </mat-option>
-<!--    get all clubs and iterate      -->
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field class="inputElement">
+          <mat-label>Club</mat-label>
+          <mat-select>
+            <mat-option value="To be added soon :D"> To be added soon :D </mat-option>
+            <!--    get all clubs and iterate      -->
+          </mat-select>
+        </mat-form-field>
 
-      <mat-checkbox> Eula / Rodo / something agreement
-        lorem ipsum costam costam bla bla
-        Eula / Rodo / something agreement
-        lorem ipsum costam costam bla bla  </mat-checkbox>
+        <mat-checkbox> Eula / Rodo / something agreement
+          lorem ipsum costam costam bla bla
+          Eula / Rodo / something agreement
+          lorem ipsum costam costam bla bla  </mat-checkbox>
 
-      <button color="accent" mat-raised-button> Register </button>
-    </div>
-
+        <button color="accent" mat-raised-button> Register </button>
+      </div>
+    </form>
   </div>
 </div>
 

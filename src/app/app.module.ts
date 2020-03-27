@@ -17,6 +17,9 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSelectModule} from "@angular/material/select";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 
@@ -32,7 +35,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     StoreModule.forRoot({
       auth: authReducer
     }),
-
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSliderModule,
@@ -41,6 +44,9 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     MatButtonModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatSnackBarModule,
+    FormsModule,
+    ReactiveFormsModule,
 
   ],
   providers: [],
