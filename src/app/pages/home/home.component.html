@@ -1,10 +1,11 @@
 <div>
   <nav>
     <ul>
-      <li><a routerLink="#">I</a></li>
-      <li><a routerLink="#" class="nav_item">home</a></li>
-      <li><a routerLink="#" class="nav_item">contact</a></li>
-      <li><a routerLink="/login" class="nav_item">login</a></li>
+      <li><a [routerLink]="null">I</a></li>
+      <li><a [routerLink]="null" class="nav_item">home</a></li>
+      <li><a [routerLink]="null" class="nav_item">contact</a></li>
+      <li *ngIf="!is_logged$"><a routerLink="/login" class="nav_item">login</a></li>
+      <li *ngIf="is_logged$"><a [routerLink]="null" class="nav_item"> Name </a></li>
     </ul>
   </nav>
 

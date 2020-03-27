@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Store} from "@ngrx/store";
+import {AuthState} from "../../state-management/auth.state";
+
 
 @Component({
   selector: 'app-home',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  is_logged$: boolean;
+
+  constructor(private store: Store<AuthState>) {
+    this.store.select('auth').subscribe(value => this.is_logged$ = value.is_logged_in)
+  }
 
   ngOnInit() {
   }
