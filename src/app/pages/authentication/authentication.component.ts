@@ -8,12 +8,6 @@ import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
-export class LoginForm {
-  email:string;
-  password: string;
-}
-
-
 
 @Component({
   selector: 'app-authentication',
@@ -28,6 +22,7 @@ export class AuthenticationComponent implements OnInit {
   @ViewChild('registrationFormDiv', {static: false}) registrationFormDiv;
 
   loginForm: FormGroup;
+  registrationForm: FormGroup;
 
   auth:AuthModel;
   constructor(private store: Store<AuthState>,
@@ -40,20 +35,29 @@ export class AuthenticationComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required]),
+      username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required])
     });
-    console.log(this.loginForm);
+
+    this.registrationForm = new FormGroup({
+      username: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required])
+    });
   }
 
-  hasError (controlName: string, errorName: string) {
+  hasErrorLogin (controlName: string, errorName: string) {
     return this.loginForm.controls[controlName].hasError(errorName);
+  };
+
+  hasErrorRegistration (controlName: string, errorName: string) {
+    return this.registrationForm.controls[controlName].hasError(errorName);
   };
 
   login() {
     if (this.loginForm.valid){
       this.authService.loginToServer(
-        this.loginForm.value.email,
+        this.loginForm.value.username,
         this.loginForm.value.password)
         .subscribe(
           value => {
@@ -66,6 +70,20 @@ export class AuthenticationComponent implements OnInit {
           error => {
             this.errorBar.open(`${error.error.detail} Please try again`, "Exit",{duration: 5000})
           }
+        );
+    }
+  }
+
+  register() {
+    if(this.registrationForm.valid) {
+      this.authService.registerWithServer(
+        this.registrationForm.value.username,
+        this.registrationForm.value.email,
+        this.registrationForm.value.password
+      )
+        .subscribe(
+          value => this.errorBar.open('Congratulations your account has been created successfully', "Exit",{duration: 5000}), // TODO: route to a registration confirmation page
+          error => this.errorBar.open(`${error.error} Please try again`, "Exit",{duration: 5000})
         );
     }
   }
