@@ -15,11 +15,11 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./authentication.component.scss']
 })
 export class AuthenticationComponent implements OnInit {
-  @ViewChild('loginBtt', {static: false}) loginBtt;
-  @ViewChild('registerBtt', {static: false}) registerBtt;
+  @ViewChild('loginBtt') loginBtt;
+  @ViewChild('registerBtt') registerBtt;
 
-  @ViewChild('loginFormDiv', {static: false}) loginFormDiv;
-  @ViewChild('registrationFormDiv', {static: false}) registrationFormDiv;
+  @ViewChild('loginFormDiv') loginFormDiv;
+  @ViewChild('registrationFormDiv') registrationFormDiv;
 
   loginForm: FormGroup;
   registrationForm: FormGroup;
