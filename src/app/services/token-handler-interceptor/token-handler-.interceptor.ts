@@ -14,7 +14,7 @@ import {AuthService} from "../auth-service/auth.service";
 
 
 @Injectable()
-export class TokenHandlerInterceptorInterceptor implements HttpInterceptor {
+export class TokenHandlerInterceptor implements HttpInterceptor {
   private tokenUtils = new JwtHelperService();
   private authData: AuthModel;
 
@@ -24,12 +24,13 @@ export class TokenHandlerInterceptorInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if(this.tokenUtils.isTokenExpired(this.authData.access) && this.authData.access != '') {
-      this.authService.updateToken(this.authData.refresh)
+    if(this.authData.access != null) {
+      const updatedRequest = request.clone({headers: request.headers.set("Authorization", `Bearer ${this.authData.access}`)});
+      console.log("Interceptor test --- token append");
+      return next.handle(updatedRequest);
     } else {
+      console.log("Interceptor test --- no token append");
       return next.handle(request);
     }
-
-
   }
 }

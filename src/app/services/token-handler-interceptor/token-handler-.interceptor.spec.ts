@@ -1,11 +1,11 @@
 import {async, TestBed} from '@angular/core/testing';
 
-import { TokenHandlerInterceptorInterceptor } from './token-handler-interceptor.interceptor';
+import { TokenHandlerInterceptor } from './token-handler-.interceptor';
 import {provideMockStore} from "@ngrx/store/testing";
 import {AuthModel} from "../../state-management/auth-state/auth.model";
 
 describe('TokenHandlerInterceptorInterceptor', () => {
-  let interceptor: TokenHandlerInterceptorInterceptor;
+  let interceptor: TokenHandlerInterceptor;
   const initialState: AuthModel = {
     is_logged_in: false,
     refresh: null,
@@ -15,7 +15,7 @@ describe('TokenHandlerInterceptorInterceptor', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [
-        { provide: TokenHandlerInterceptorInterceptor, useValue: {}},
+        { provide: TokenHandlerInterceptor, useValue: {}},
         provideMockStore({ initialState })
       ]
     }).compileComponents();
@@ -23,7 +23,7 @@ describe('TokenHandlerInterceptorInterceptor', () => {
   }));
 
   beforeEach(() => {
-    interceptor = TestBed.inject(TokenHandlerInterceptorInterceptor);
+    interceptor = TestBed.inject(TokenHandlerInterceptor);
   });
 
   it('should be created', () => {
