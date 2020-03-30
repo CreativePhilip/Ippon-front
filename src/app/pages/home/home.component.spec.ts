@@ -4,6 +4,8 @@ import { HomeComponent } from './home.component';
 import {RouterTestingModule} from "@angular/router/testing";
 import {AuthModel} from "../../state-management/auth-state/auth.model";
 import {MockStore, provideMockStore} from "@ngrx/store/testing";
+import {DatabaseService} from "../../services/databaseConnection/database.service";
+import {DatabaseServiceMock} from "../../services/databaseConnection/database.service.mock";
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -20,7 +22,10 @@ describe('HomeComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
       imports: [ RouterTestingModule ],
-      providers: [provideMockStore({ initialState })]
+      providers: [
+        provideMockStore({ initialState }),
+        {provide: DatabaseService, useValue: DatabaseServiceMock}
+      ]
     }).compileComponents();
 
     store = TestBed.inject(MockStore);
