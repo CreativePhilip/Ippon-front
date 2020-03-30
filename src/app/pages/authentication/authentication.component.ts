@@ -1,8 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Store} from "@ngrx/store";
-import {AuthState} from "../../state-management/auth.state";
-import * as AuthActions from "../../state-management/auth.actions"
-import {AuthModel} from "../../models/auth/auth.model";
+import {AuthState} from "../../state-management/auth-state/auth.state";
+import * as AuthActions from "../../state-management/auth-state/auth.actions"
+import {AuthModel} from "../../state-management/auth-state/auth.model";
 import {AuthService} from "../../services/auth-service/auth.service";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";

@@ -1,5 +1,5 @@
-import {AuthModel} from "../models/auth/auth.model";
-import * as AuthActions from "../state-management/auth.actions"
+import {AuthModel} from "./auth.model";
+import * as AuthActions from "./auth.actions"
 
 const defaultState: AuthModel = {
   is_logged_in: false,

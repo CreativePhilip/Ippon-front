@@ -1,4 +1,4 @@
-import { AuthModel } from "../models/auth/auth.model";
+import { AuthModel } from "./auth.model";
 
 export interface AuthState {
   readonly auth: AuthModel;

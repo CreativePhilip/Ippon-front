@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {NgModule} from "@angular/core";
 import { StoreModule } from "@ngrx/store";
-import { authReducer } from "./state-management/auth.reducer";
+import { authReducer } from "./state-management/auth-state/auth.reducer";
 
 import { AppRoutingModule } from './app-routing.module';
 

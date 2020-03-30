@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Store} from "@ngrx/store";
-import {AuthState} from "../../state-management/auth.state";
+import {AuthState} from "../../state-management/auth-state/auth.state";
 
 
 @Component({

@@ -2,8 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
 import {RouterTestingModule} from "@angular/router/testing";
-import {AuthModel} from "../../models/auth/auth.model";
-import {MockStore} from "@ngrx/store/testing";
+import {AuthModel} from "../../state-management/auth-state/auth.model";
+import {MockStore, provideMockStore} from "@ngrx/store/testing";
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -19,18 +19,21 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
-      imports: [RouterTestingModule]
+      imports: [ RouterTestingModule ],
+      providers: [provideMockStore({ initialState })]
     }).compileComponents();
 
-
+    store = TestBed.inject(MockStore);
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
 
-    store = TestBed.inject(MockStore);
+  afterEach(() => {
+    fixture.destroy();
   });
 
   it('should create', () => {

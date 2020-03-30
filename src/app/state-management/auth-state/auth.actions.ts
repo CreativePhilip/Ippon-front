@@ -1,5 +1,5 @@
 import {Action, createAction} from "@ngrx/store"
-import { AuthModel } from "../models/auth/auth.model";
+import { AuthModel } from "./auth.model";
 
 export const LOGIN = '[AUTHMODEL] Login';
 export const LOGOUT = '[AUTHMODEL] Logout';
