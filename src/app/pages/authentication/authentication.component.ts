@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {AuthState} from "../../state-management/auth-state/auth.state";
 import * as AuthActions from "../../state-management/auth-state/auth.actions"

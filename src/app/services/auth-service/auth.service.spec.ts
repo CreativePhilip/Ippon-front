@@ -3,7 +3,7 @@ import {HttpClientTestingModule, HttpTestingController} from "@angular/common/ht
 import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
-  const service: AuthService = TestBed.inject(AuthService);
+  let service: AuthService;
 
 
   beforeEach(() => {
@@ -11,6 +11,8 @@ describe('AuthService', () => {
       imports: [HttpClientTestingModule],
       providers: [AuthService]
     });
+
+    service = TestBed.inject(AuthService);
   });
 
 
