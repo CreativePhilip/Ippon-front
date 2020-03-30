@@ -15,15 +15,9 @@ describe('AuthenticationComponent', () => {
   let store: MockStore;
 
   let authMock = {
-    loginToServer(login: string, password: string) {
-
-    },
-    updateToken(refresh: string) {
-
-    },
-    registerWithServer(login: string, email: string,password: string) {
-
-    },
+    loginToServer(login: string, password: string) {},
+    updateToken(refresh: string) {},
+    registerWithServer(login: string, email: string,password: string) {},
   };
 
   const initialState: AuthModel = {

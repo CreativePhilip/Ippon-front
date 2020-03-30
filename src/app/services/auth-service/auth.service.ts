@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import { environment } from '../../../environments/environment';
 
 export interface AuthResponse {
   refresh: string,
@@ -10,20 +11,21 @@ export interface AuthResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private rootUrl = "http://192.168.8.102:8000";
+  private rootUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
 
   loginToServer(login: string, password: string) {
-    return this.http.post<AuthResponse>(`${this.rootUrl}/auth/token`, {"username": login, "password": password});
+    console.log(`${this.rootUrl}auth/token`);
+    return this.http.post<AuthResponse>(`${this.rootUrl}auth/token`, {"username": login, "password": password});
   }
 
   updateToken(refresh: string) {
-    return this.http.post(`${this.rootUrl}/auth/token/refresh`, {"refresh": refresh});
+    return this.http.post(`${this.rootUrl}auth/token/refresh`, {"refresh": refresh});
   }
 
   registerWithServer(login: string, email: string,password: string) {
-    return this.http.post(`${this.rootUrl}/ippon/registration/`, {"username": login,"email": email, "password": password});
+    return this.http.post(`${this.rootUrl}ippon/registration/`, {"username": login,"email": email, "password": password});
   }
 }
