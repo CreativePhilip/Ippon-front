@@ -17,7 +17,6 @@ export class AuthService {
 
 
   loginToServer(login: string, password: string) {
-    console.log(`${this.rootUrl}auth/token`);
     return this.http.post<AuthResponse>(`${this.rootUrl}auth/token`, {"username": login, "password": password});
   }
 
