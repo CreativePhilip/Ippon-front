@@ -57,9 +57,7 @@ export class AuthenticationComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid){
-      this.authService.loginToServer(
-        this.loginForm.value.username,
-        this.loginForm.value.password)
+      this.authService.loginToServer(this.loginForm.value.username, this.loginForm.value.password)
         .subscribe(
           value => {
             this.store.dispatch(new AuthActions.Login({

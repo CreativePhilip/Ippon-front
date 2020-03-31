@@ -21,6 +21,11 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {TokenHandlerInterceptor} from "./services/token-handler-interceptor/token-handler-.interceptor";
+import { ProfileComponent } from './pages/profile/profile/profile.component';
+import { ProfileNavComponent } from './navbars/profile-nav/profile-nav.component';
+import { ProfileDataComponent } from './pages/profile/profile-data/profile-data.component';
+import { ProfileTournamentComponent } from './pages/profile/profile-tournament/profile-tournament.component';
+import { ProfileStaffComponent } from './pages/profile/profile-staff/profile-staff.component';
 
 
 
@@ -29,7 +34,12 @@ import {TokenHandlerInterceptor} from "./services/token-handler-interceptor/toke
     AppComponent,
     HomeComponent,
     MinNavComponent,
-    AuthenticationComponent
+    AuthenticationComponent,
+    ProfileComponent,
+    ProfileNavComponent,
+    ProfileDataComponent,
+    ProfileTournamentComponent,
+    ProfileStaffComponent
   ],
   imports: [
     BrowserModule,
