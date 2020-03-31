@@ -1,0 +1,41 @@
+@import "src/global_variables.scss";
+
+.container {
+  margin: 2em;
+  position: relative;
+
+  &::after {
+    content: "";
+    background-color: $warning;
+    display: block;
+    width: 100%;
+    height: 2px;
+
+    position: absolute;
+    bottom: -1em;
+  }
+}
+
+.profile-main {
+  display: flex;
+}
+
+.profile-main-data {
+  margin-left: 2em;
+}
+
+.profile-image {
+  border-radius: 15%;
+}
+
+.logout-button {
+  margin-left: auto;
+  height: 10%;
+}
+
+.verified {
+  height: 1em;
+  width: 1em;
+
+  fill: $warning;
+}

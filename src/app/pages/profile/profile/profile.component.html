@@ -1,0 +1,8 @@
+<main>
+  <app-profile-nav (selectedTabChange)="handleTabChanges($event)"></app-profile-nav>
+  <app-profile-tournament *ngIf="childVisibilityState.tournamentIsOn" class="profile-page"></app-profile-tournament>
+  <app-profile-data *ngIf="childVisibilityState.profileIsOn" class="profile-page"></app-profile-data>
+  <app-profile-staff *ngIf="childVisibilityState.staffIsOn" class="profile-page"></app-profile-staff>
+</main>
+
+

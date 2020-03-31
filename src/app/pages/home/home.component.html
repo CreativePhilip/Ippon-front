@@ -5,7 +5,7 @@
       <li><a [routerLink]="null" class="nav_item">home</a></li>
       <li><a [routerLink]="null" class="nav_item">contact</a></li>
       <li *ngIf="!is_logged$"><a routerLink="/login" class="nav_item">login</a></li>
-      <li *ngIf="is_logged$"><a [routerLink]="null" class="nav_item"> {{ this.username }} </a></li>
+      <li *ngIf="is_logged$"><a routerLink="/profile" class="nav_item"> {{ this.username }} </a></li>
     </ul>
   </nav>
 
