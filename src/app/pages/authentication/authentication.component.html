@@ -8,7 +8,7 @@
 
   <div class="authSection">
     <div #loginFormDiv class="loginForm ">
-      <form [formGroup]="this.loginForm" role="form" (ngSubmit)="login()">
+      <form [formGroup]="this.loginForm" role="form" (ngSubmit)="login()" (keydown.enter)="login()">
         <mat-form-field class="inputElement">
           <mat-label>Username</mat-label>
           <input type="text" formControlName="username" matInput>
@@ -20,13 +20,19 @@
           <input type="password" formControlName="password" matInput>
           <mat-error *ngIf="hasErrorLogin('password', 'required')">Password is required</mat-error>
         </mat-form-field>
+
+        <mat-checkbox formControlName="keepLoggedIn"> Keep me logged in </mat-checkbox>
+
+        <br>
+        <br>
+
         <button color="accent" mat-raised-button>Login</button>
       </form>
     </div>
 
 
     <div #registrationFormDiv class="registrationForm notActive">
-      <form [formGroup]="this.registrationForm" (ngSubmit)="register()">
+      <form [formGroup]="this.registrationForm" (ngSubmit)="register()" (keydown.enter)="register()">
         <mat-form-field class="inputElement">
           <mat-label> Username </mat-label>
           <input type="text" formControlName="username" matInput>
@@ -45,11 +51,16 @@
           <mat-error *ngIf="hasErrorRegistration('password', 'required')">Password is required</mat-error>
         </mat-form-field>
 
+        <br>
+        <br>
+
         <button color="accent" mat-raised-button> Register </button>
       </form>
     </div>
   </div>
 </div>
+
+
 
 <!-- Form from design -->
 <!--<form>-->
