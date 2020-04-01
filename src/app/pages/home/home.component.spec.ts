@@ -6,12 +6,16 @@ import {AuthModel} from "../../state-management/auth-state/auth.model";
 import {MockStore, provideMockStore} from "@ngrx/store/testing";
 import {DatabaseService} from "../../services/databaseConnection/database.service";
 import {DatabaseServiceMock} from "../../services/databaseConnection/database.service.mock";
+import {AuthService} from "../../services/auth-service/auth.service";
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let store: MockStore;
   let fixture: ComponentFixture<HomeComponent>;
 
+  let authMock = {
+    loadTokensFromLocalStorage() {}
+  };
 
   const initialState: AuthModel = {
     is_logged_in: false,
@@ -25,7 +29,8 @@ describe('HomeComponent', () => {
       imports: [ RouterTestingModule ],
       providers: [
         provideMockStore({ initialState }),
-        {provide: DatabaseService, useValue: DatabaseServiceMock}
+        {provide: DatabaseService, useValue: DatabaseServiceMock},
+        {provide: AuthService, useValue: authMock }
       ]
     }).compileComponents();
 
