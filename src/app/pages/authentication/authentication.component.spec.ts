@@ -53,4 +53,65 @@ describe('AuthenticationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call check if password and username is supplied and validate login form', function () {
+    component.loginForm.patchValue({"username": "John"});
+    component.loginForm.patchValue({"password": "asdasd123123"});
+
+    expect(component.loginForm.valid).toBeTruthy();
+  });
+
+  it('should not validate login form if username is not supplied', function () {
+    component.loginForm.patchValue({"username": ""});
+    component.loginForm.patchValue({"password": "asdasd123123"});
+
+    expect(component.loginForm.valid).toBeFalsy();
+  });
+
+  it('should not validate login form if password is not supplied', function () {
+    component.loginForm.patchValue({"username": "aaaaaaaaaa"});
+    component.loginForm.patchValue({"password": ""});
+
+    expect(component.loginForm.valid).toBeFalsy();
+  });
+
+  it('should validate registration form', function () {
+    component.registrationForm.patchValue({"username": "aaaaaa"});
+    component.registrationForm.patchValue({"email": "aaaaaa@aaaa.com"});
+    component.registrationForm.patchValue({"password": "asdasdasdas"});
+
+    expect(component.registrationForm.valid).toBeTruthy();
+  });
+
+  it('should not validate registration form if username is not supplied', function () {
+    component.registrationForm.patchValue({"username": ""});
+    component.registrationForm.patchValue({"email": "aaaaaa@aaaa.com"});
+    component.registrationForm.patchValue({"password": "asdasdasdas"});
+
+    expect(component.registrationForm.valid).toBeFalsy();
+  });
+
+  it('should not validate registration form if email is not supplied', function () {
+    component.registrationForm.patchValue({"username": "aaaaaaaaa"});
+    component.registrationForm.patchValue({"email": ""});
+    component.registrationForm.patchValue({"password": "asdasdasdas"});
+
+    expect(component.registrationForm.valid).toBeFalsy();
+  });
+
+  it('should not validate registration form if password is not supplied', function () {
+    component.registrationForm.patchValue({"username": "aaaaaaaaaa"});
+    component.registrationForm.patchValue({"email": "aaaaaa@aaaa.com"});
+    component.registrationForm.patchValue({"password": ""});
+
+    expect(component.registrationForm.valid).toBeFalsy();
+  });
+
+  it('should not validate registration form if email is not correct', function () {
+    component.registrationForm.patchValue({"username": "aaaaaaaa"});
+    component.registrationForm.patchValue({"email": "aaaaaaaaaa.com"});
+    component.registrationForm.patchValue({"password": "asdasdasdas"});
+
+    expect(component.registrationForm.valid).toBeFalsy();
+  });
 });
