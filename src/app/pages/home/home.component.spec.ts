@@ -9,8 +9,9 @@ import {DatabaseServiceMock} from "../../services/databaseConnection/database.se
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
   let store: MockStore;
+  let fixture: ComponentFixture<HomeComponent>;
+
 
   const initialState: AuthModel = {
     is_logged_in: false,
