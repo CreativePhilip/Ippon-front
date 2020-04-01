@@ -64,10 +64,13 @@ export class AuthenticationComponent implements OnInit {
               is_logged_in: true,
               refresh: value.refresh,
               access: value.access}));
+            if(this.loginForm.value.keepLoggedIn)
+              this.authService.saveTokensToLocalStorage(value.access, value.refresh);
+            console.log("logged in");
             this.router.navigateByUrl("/home");
           },
           error => {
-            this.errorBar.open(`${error.error.detail} Please try again`, "Exit",{duration: 5000})
+            this.errorBar.open(`${error} Please try again`, "Exit",{duration: 5000})
           }
         );
     }
