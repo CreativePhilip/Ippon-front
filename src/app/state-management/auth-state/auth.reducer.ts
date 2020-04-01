@@ -14,6 +14,7 @@ export function authReducer(state: AuthModel = defaultState,
     case "[AUTHMODEL] Login":
       return action.payload;
     case "[AUTHMODEL] Logout":
+      localStorage.clear();
       return defaultState;
     default:
       return defaultState;
