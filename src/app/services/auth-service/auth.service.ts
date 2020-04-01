@@ -73,11 +73,13 @@ export class AuthService implements OnDestroy{
   }
 
   loadTokensFromLocalStorage(){
-    console.log("loading tokens from storage");
     const a = localStorage.getItem("access");
     const r = localStorage.getItem("refresh");
-    if(a != null && r != null && !this.jwtHelper.isTokenExpired(r)) {
+    if(a != null && r != null && this.jwtHelper.isTokenExpired(r) == false) {
       this.store.dispatch(new AuthActions.Login({is_logged_in: true, refresh: r, access: a}));
+      this.tokenRefresh();
+    } else {
+      this.store.dispatch(new AuthActions.Login({is_logged_in: false, refresh: null, access: null}));
     }
   }
 }

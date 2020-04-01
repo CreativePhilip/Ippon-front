@@ -18,12 +18,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   subscription;
 
   constructor(private store: Store<AuthState>,
-              private db: DatabaseService) {
+              private db: DatabaseService,
+              private auth: AuthService) {
   }
 
   ngOnInit() {
+    this.auth.loadTokensFromLocalStorage();
+    this.subscription = this.store.select('auth').subscribe(value => this.handleUserChange(value));
 
-    this.subscription = this.store.select('auth').subscribe(value => this.handleUserChange(value))
   }
 
   ngOnDestroy(): void {
@@ -31,12 +33,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   handleUserChange(token) {
-    console.log(token);
     this.is_logged$ = token.is_logged_in;
     if(this.is_logged$){
       this.db.userData().subscribe(value => this.username = value.username)
     }
-
   }
-
 }
