@@ -19,13 +19,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(private store: Store<AuthState>,
               private db: DatabaseService,
-              private auth: AuthService) {
+              ) {
   }
 
   ngOnInit() {
-    this.auth.loadTokensFromLocalStorage();
     this.subscription = this.store.select('auth').subscribe(value => this.handleUserChange(value));
-
   }
 
   ngOnDestroy(): void {
