@@ -13,8 +13,6 @@ describe('HomeComponent', () => {
   let store: MockStore;
   let fixture: ComponentFixture<HomeComponent>;
 
-
-
   const initialState: AuthModel = {
     is_logged_in: false,
     refresh: null,
