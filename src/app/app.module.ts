@@ -12,7 +12,7 @@ import { AuthenticationComponent } from './pages/authentication/authentication.c
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from "@angular/material/slider";
-import {MatError, MatFormFieldModule} from "@angular/material/form-field";
+import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSelectModule} from "@angular/material/select";
@@ -26,6 +26,9 @@ import { ProfileNavComponent } from './navbars/profile-nav/profile-nav.component
 import { ProfileDataComponent } from './pages/profile/profile-data/profile-data.component';
 import { ProfileTournamentComponent } from './pages/profile/profile-tournament/profile-tournament.component';
 import { ProfileStaffComponent } from './pages/profile/profile-staff/profile-staff.component';
+import {MatExpansionModule} from "@angular/material/expansion";
+import { AdminTournamentCardComponent } from './components/admin-tournament-card/admin-tournament-card.component';
+import {MatCardModule} from "@angular/material/card";
 
 
 
@@ -40,7 +43,7 @@ import { ProfileStaffComponent } from './pages/profile/profile-staff/profile-sta
     ProfileDataComponent,
     ProfileTournamentComponent,
     ProfileStaffComponent,
-    MatError
+    AdminTournamentCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,6 @@ import { ProfileStaffComponent } from './pages/profile/profile-staff/profile-sta
       auth: authReducer
     }),
     HttpClientModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     MatSliderModule,
     MatFormFieldModule,
@@ -59,6 +61,9 @@ import { ProfileStaffComponent } from './pages/profile/profile-staff/profile-sta
     MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule,
+    AppRoutingModule,
+    MatExpansionModule,
+    MatCardModule,
 
   ],
   providers: [
