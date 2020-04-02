@@ -55,11 +55,9 @@ export class AuthService implements OnDestroy{
   }
 
   tokenRefresh() {
-    console.log("Token refresh");
     if(this.auth.is_logged_in && !this.jwtHelper.isTokenExpired(this.auth.refresh)) {
       this.updateToken(this.auth.refresh).subscribe(
         value => {
-          console.log("dispatching actions");
           this.store.dispatch(new AuthActions.Login(
             {is_logged_in: true, refresh: this.auth.refresh, access: value.access}));},
         error => {console.log(error)}

@@ -29,6 +29,7 @@ import { ProfileStaffComponent } from './pages/profile/profile-staff/profile-sta
 import {MatExpansionModule} from "@angular/material/expansion";
 import { AdminTournamentCardComponent } from './components/admin-tournament-card/admin-tournament-card.component';
 import {MatCardModule} from "@angular/material/card";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 
 
 
@@ -64,7 +65,9 @@ import {MatCardModule} from "@angular/material/card";
     AppRoutingModule,
     MatExpansionModule,
     MatCardModule,
-
+    StoreDevtoolsModule.instrument({
+      maxAge:20
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenHandlerInterceptor, multi:true }
