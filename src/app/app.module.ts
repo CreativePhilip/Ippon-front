@@ -30,6 +30,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import { AdminTournamentCardComponent } from './components/admin-tournament-card/admin-tournament-card.component';
 import {MatCardModule} from "@angular/material/card";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {MatMenuModule} from "@angular/material/menu";
 
 
 
@@ -66,8 +67,9 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
     MatExpansionModule,
     MatCardModule,
     StoreDevtoolsModule.instrument({
-      maxAge:20
-    })
+      maxAge: 20
+    }),
+    MatMenuModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenHandlerInterceptor, multi:true }
