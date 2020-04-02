@@ -1,0 +1,46 @@
+@import "src/global_variables.scss";
+h1 {
+  line-height: 1em;
+}
+mat-card {
+  margin: 1em 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.tournament-image {
+  width: 150px;
+  height: 150px;
+
+  border-radius: 20px;
+}
+
+.main-data {
+  margin-left: 2em;
+}
+
+.action-more {
+  margin-left: auto;
+  height: 3em;
+  width: 3em;
+
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.text-warn {
+  color: $yellow;
+}
+
+.text-error {
+  color: $error;
+}
+
+@media only screen and (max-width: 650px) {
+  mat-card {
+    flex-direction: column;
+    align-items: center;
+  }
+}
