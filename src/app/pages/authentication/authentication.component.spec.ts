@@ -7,6 +7,8 @@ import {MockStore, provideMockStore} from "@ngrx/store/testing";
 import {AuthModel} from "../../state-management/auth-state/auth.model";
 import {AuthService} from "../../services/auth-service/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatError, MatFormField, MatFormFieldControl, MatLabel} from "@angular/material/form-field";
+import {MatCheckbox} from "@angular/material/checkbox";
 
 describe('AuthenticationComponent', () => {
   let component: AuthenticationComponent;
@@ -28,7 +30,7 @@ describe('AuthenticationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AuthenticationComponent, MinNavComponent ],
+      declarations: [ AuthenticationComponent, MinNavComponent, MatError, MatLabel, MatCheckbox ],
       imports: [RouterTestingModule ],
       providers: [
         provideMockStore({ initialState }),

@@ -12,7 +12,7 @@ import { AuthenticationComponent } from './pages/authentication/authentication.c
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from "@angular/material/slider";
-import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatError, MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSelectModule} from "@angular/material/select";
@@ -39,7 +39,8 @@ import { ProfileStaffComponent } from './pages/profile/profile-staff/profile-sta
     ProfileNavComponent,
     ProfileDataComponent,
     ProfileTournamentComponent,
-    ProfileStaffComponent
+    ProfileStaffComponent,
+    MatError
   ],
   imports: [
     BrowserModule,

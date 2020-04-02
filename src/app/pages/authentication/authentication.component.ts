@@ -70,7 +70,7 @@ export class AuthenticationComponent implements OnInit {
             this.router.navigateByUrl("/home");
           },
           error => {
-            this.errorBar.open(`${error} Please try again`, "Exit",{duration: 5000})
+            this.errorBar.open(`${error.error.detail} Please try again`, "Exit",{duration: 5000})
           }
         );
     }

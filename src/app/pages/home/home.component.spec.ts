@@ -13,9 +13,7 @@ describe('HomeComponent', () => {
   let store: MockStore;
   let fixture: ComponentFixture<HomeComponent>;
 
-  let authMock = {
-    loadTokensFromLocalStorage() {}
-  };
+
 
   const initialState: AuthModel = {
     is_logged_in: false,
@@ -30,7 +28,6 @@ describe('HomeComponent', () => {
       providers: [
         provideMockStore({ initialState }),
         {provide: DatabaseService, useValue: DatabaseServiceMock},
-        {provide: AuthService, useValue: authMock }
       ]
     }).compileComponents();
 
