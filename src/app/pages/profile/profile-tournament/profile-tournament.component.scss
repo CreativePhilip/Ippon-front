@@ -1,0 +1,30 @@
+@import "src/global_variables.scss";
+
+.content {
+  padding: 2em 2em 2em 2em;
+}
+
+.add-tournament {
+  position: absolute;
+
+  min-height: 50px;
+  min-width: 50px;
+  width: 3vw;
+  height: 3vw;
+
+  bottom: 2em;
+  right: 2em;
+  transform: rotate(0deg);
+  transition: transform linear 200ms;
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: $warning;
+  }
+}
+
+.add-tournament:hover {
+  transform: rotate(180deg);
+  transition: transform linear 200ms;
+}
+

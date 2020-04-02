@@ -1,1 +1,41 @@
-<p>profile-tournament works!</p>
+<div class="content">
+  <mat-accordion multi="true">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> <h3>Active Tournaments  {{activeTournamentsCount}}</h3> </mat-panel-title>
+      </mat-expansion-panel-header>
+      <h4 *ngIf="activeTournamentsCount==0">You don't have any active tournaments</h4>
+      <div class="test" *ngFor="let t of tournaments">
+        <app-admin-tournament-card
+          [tournamentName]="t.name"
+          [startDate]="t.start_time"
+          [registrationEndDate]="t.registration_end_time">
+        </app-admin-tournament-card>
+      </div>
+
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> <h3>Upcoming Tournaments  {{upcomingTournamentsCount}}</h3></mat-panel-title>
+      </mat-expansion-panel-header>
+      <h4 *ngIf="upcomingTournamentsCount==0">You don't have any upcoming tournaments</h4>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> <h3>Previous Tournaments  {{previousTournamentsCount}}</h3> </mat-panel-title>
+      </mat-expansion-panel-header>
+      <h4 *ngIf="previousTournamentsCount==0">You don't have any previous tournaments</h4>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <div class="add-tournament">
+    <a [routerLink]="null"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg></a>
+  </div>
+
+</div>
+

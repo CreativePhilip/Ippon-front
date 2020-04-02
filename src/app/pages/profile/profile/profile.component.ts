@@ -7,8 +7,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
   public childVisibilityState = {
-    tournamentIsOn: false,
-    profileIsOn: true,
+    tournamentIsOn: true,
+    profileIsOn: false,
     staffIsOn: false,
   };
 

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfileTournamentComponent } from './profile-tournament.component';
+import {DatabaseService} from "../../../services/databaseConnection/database.service";
+import {DatabaseServiceMock} from "../../../services/databaseConnection/database.service.mock";
 
 describe('ProfileTournamentComponent', () => {
   let component: ProfileTournamentComponent;
@@ -8,7 +10,8 @@ describe('ProfileTournamentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfileTournamentComponent ]
+      declarations: [ ProfileTournamentComponent ],
+      providers: [{provide: DatabaseService, useValue: DatabaseServiceMock},]
     })
     .compileComponents();
   }));
