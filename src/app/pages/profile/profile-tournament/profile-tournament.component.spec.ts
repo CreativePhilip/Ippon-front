@@ -11,7 +11,7 @@ describe('ProfileTournamentComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ProfileTournamentComponent ],
-      providers: [{provide: DatabaseService, useValue: DatabaseServiceMock},]
+      providers: [{provide: DatabaseService, useClass: DatabaseServiceMock},]
     })
     .compileComponents();
   }));
