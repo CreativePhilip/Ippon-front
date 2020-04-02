@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminTournamentCardComponent } from './admin-tournament-card.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 describe('AdminTournamentCardComponent', () => {
   let component: AdminTournamentCardComponent;
@@ -8,7 +9,11 @@ describe('AdminTournamentCardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminTournamentCardComponent ]
+      declarations: [ AdminTournamentCardComponent ],
+      providers: [],
+      imports: [
+        MatMenuModule
+      ]
     })
     .compileComponents();
   }));
