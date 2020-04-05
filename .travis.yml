@@ -20,12 +20,12 @@ script:
 notifications:
   slack: ipponforge:POZIxDUMmeddHxK10Ub78v8j
 
-before_deploy:
-  - node_modules/@angular/cli/bin/ng build --prod
-
-deploy:
-  provider: firebase
-  token:
-    secure: $FIREBASE_KEY
-  on:
-    branch: master
+#before_deploy:
+    ##  - node_modules/@angular/cli/bin/ng build --prod
+    ##
+    ##deploy:
+    ##  provider: firebase
+    ##  token:
+    ##    secure: $FIREBASE_KEY
+  ##  on:
+  ##    branch: master
