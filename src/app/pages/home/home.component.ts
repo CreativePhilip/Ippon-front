@@ -13,7 +13,7 @@ import {AuthService} from "../../services/auth-service/auth.service";
 export class HomeComponent implements OnInit, OnDestroy {
 
   is_logged$: boolean;
-  username: string;
+  first_name: string;
 
   subscription;
 
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   handleUserChange(token) {
     this.is_logged$ = token.is_logged_in;
     if(this.is_logged$){
-      this.db.userData().subscribe(value => this.username = value.username)
+      this.db.userData().subscribe(value => this.first_name = value.first_name)
     }
   }
 }
