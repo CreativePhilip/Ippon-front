@@ -26,6 +26,6 @@ before_deploy:
 deploy:
   provider: firebase
   token:
-    secure: $FIREBASE-KEY
+    secure: $FIREBASE_KEY
   on:
     branch: master
