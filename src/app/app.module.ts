@@ -49,10 +49,10 @@ import {MatMenuModule} from "@angular/material/menu";
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     StoreModule.forRoot({
       auth: authReducer
     }),
-    HttpClientModule,
     BrowserAnimationsModule,
     MatSliderModule,
     MatFormFieldModule,

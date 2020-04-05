@@ -4,6 +4,8 @@ import { ProfileDataComponent } from './profile-data.component';
 import {provideMockStore} from "@ngrx/store/testing";
 import {AuthModel} from "../../../state-management/auth-state/auth.model";
 import {RouterTestingModule} from "@angular/router/testing";
+import {DatabaseService} from "../../../services/databaseConnection/database.service";
+import {DatabaseServiceMock} from "../../../services/databaseConnection/database.service.mock";
 
 describe('ProfileDataComponent', () => {
   let component: ProfileDataComponent;
@@ -19,7 +21,9 @@ describe('ProfileDataComponent', () => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       declarations: [ ProfileDataComponent ],
-      providers: [provideMockStore({ initialState })]
+      providers: [
+        provideMockStore({ initialState }),
+        { provide: DatabaseService, useClass: DatabaseServiceMock}]
     })
     .compileComponents();
   }));
