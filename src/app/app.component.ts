@@ -24,6 +24,6 @@ export class AppComponent {
       if(event instanceof NavigationEnd) {
         gtag('config', 'UA-162249928-1', {'page_path': event.urlAfterRedirects});
       }
-    } )
+    })
   }
 }

@@ -14,8 +14,7 @@ describe('AdminTournamentCardComponent', () => {
       imports: [
         MatMenuModule
       ]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
