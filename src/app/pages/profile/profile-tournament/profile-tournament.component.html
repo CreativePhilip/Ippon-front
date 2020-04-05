@@ -1,6 +1,6 @@
 <div class="content">
   <mat-accordion multi="true">
-    <mat-expansion-panel>
+    <mat-expansion-panel [expanded]="true">
       <mat-expansion-panel-header>
         <mat-panel-title> <h3>Active Tournaments  {{activeTournamentsCount}}</h3> </mat-panel-title>
       </mat-expansion-panel-header>
@@ -16,7 +16,7 @@
 
     </mat-expansion-panel>
 
-    <mat-expansion-panel>
+    <mat-expansion-panel [expanded]="true">
       <mat-expansion-panel-header>
         <mat-panel-title> <h3>Upcoming Tournaments  {{upcomingTournamentsCount}}</h3></mat-panel-title>
       </mat-expansion-panel-header>
@@ -24,7 +24,7 @@
 
     </mat-expansion-panel>
 
-    <mat-expansion-panel>
+    <mat-expansion-panel [expanded]="true">
       <mat-expansion-panel-header>
         <mat-panel-title> <h3>Previous Tournaments  {{previousTournamentsCount}}</h3> </mat-panel-title>
       </mat-expansion-panel-header>
