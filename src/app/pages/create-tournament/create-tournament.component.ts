@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {DatabaseService} from "../../services/databaseConnection/database.service";
 import {UserData} from "../../services/databaseConnection/models/userData";
 import {Router} from "@angular/router";
+import {GoogleAPIService} from "../../services/googleAPI/google-api.service";
 
 @Component({
   selector: 'app-create-tournament',
@@ -39,6 +40,7 @@ export class CreateTournamentComponent implements OnInit {
   };
 
   constructor(private db: DatabaseService,
+              private googleApi: GoogleAPIService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -62,16 +64,19 @@ export class CreateTournamentComponent implements OnInit {
     );
   }
 
-  initMap() {
+   initMap() {
     if(document.getElementById('map') != null) {
       this.map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 51.11739093136664, lng: 17.0772959},
         zoom: 12
       });
-
-      this.map.addListener('click', (event:google.maps.Place) => {
+      this.map.addListener('click',  async (event:google.maps.Place) => {
+        console.log("siema test");
         if(event.placeId) {
           this.placeID = event.placeId;
+          console.log("asking google api");
+          let placeDetails = await this.googleApi.getPlaceInformation(event.placeId).catch(reason => console.log(reason));
+          console.log(placeDetails);
         }
       });
     }

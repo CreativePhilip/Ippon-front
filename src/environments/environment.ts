@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
 
-  apiUrl: "http://127.0.0.1:8000/"
+  apiUrl: "http://127.0.0.1:8000/",
+  googleApiKey: "AIzaSyBn9oy3QnE0fVD4718MUfhJTvWeI4ygKnY",
 };
 
 /*

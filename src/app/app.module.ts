@@ -31,6 +31,11 @@ import { AdminTournamentCardComponent } from './components/admin-tournament-card
 import {MatCardModule} from "@angular/material/card";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {MatMenuModule} from "@angular/material/menu";
+import {CreateTournamentComponent} from "./pages/create-tournament/create-tournament.component";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {EditorModule} from "@tinymce/tinymce-angular";
+import {MatStepperModule} from "@angular/material/stepper";
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -46,6 +51,7 @@ import {MatMenuModule} from "@angular/material/menu";
     ProfileTournamentComponent,
     ProfileStaffComponent,
     AdminTournamentCardComponent,
+    CreateTournamentComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +75,11 @@ import {MatMenuModule} from "@angular/material/menu";
     StoreDevtoolsModule.instrument({
       maxAge: 20
     }),
-    MatMenuModule
+    MatMenuModule,
+    MatDatepickerModule,
+    EditorModule,
+    MatStepperModule,
+    MatNativeDateModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenHandlerInterceptor, multi:true }

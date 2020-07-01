@@ -49,7 +49,7 @@
       <mat-step>
         <ng-template matStepLabel>Location</ng-template>
         <div class="map-div" id="map"></div>
-        <span>Selected location: {{placeData}}</span>
+        <span>Selected location: {{placeID}}</span>
         <input type="hidden" [value]="placeID" formControlName="locationID">
         <div>
           <button mat-button matStepperNext>Next</button>

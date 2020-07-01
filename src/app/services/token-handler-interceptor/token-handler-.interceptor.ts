@@ -1,16 +1,11 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor
-} from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { JwtHelperService } from "@auth0/angular-jwt";
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {JwtHelperService} from "@auth0/angular-jwt";
 import {AuthState} from "../../state-management/auth-state/auth.state";
 import {Store} from "@ngrx/store";
 import {AuthModel} from "../../state-management/auth-state/auth.model";
-import {AuthService} from "../auth-service/auth.service";
+import {environment} from "../../../environments/environment";
 
 
 @Injectable()
@@ -28,11 +23,18 @@ export class TokenHandlerInterceptor implements HttpInterceptor, OnDestroy {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    if (request.url.includes(environment.apiUrl))
+      return next.handle(this.backendAPIInterception(request));
+  }
+
+  backendAPIInterception(request: HttpRequest<unknown>) {
     if(this.authData.access != null) {
-      const updatedRequest = request.clone({headers: request.headers.set("Authorization", `Bearer ${this.authData.access}`)});
-      return next.handle(updatedRequest);
+      return request.clone({
+        headers: request.headers
+          .append("Authorization", `Bearer ${this.authData.access}`)
+      });
     } else {
-      return next.handle(request);
+      return request;
     }
   }
 }
