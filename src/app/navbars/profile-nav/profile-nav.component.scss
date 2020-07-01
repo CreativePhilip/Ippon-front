@@ -6,6 +6,8 @@ a {
 }
 
 nav {
+  position: sticky;
+
   background-color: $main-gray;
   height: 100vh;
   width: max(5vw, 150px);

@@ -14,10 +14,14 @@ export class DatabaseService {
   constructor(private http: HttpClient) { }
 
   userData() {
-    return this.http.get<UserData>(DatabaseEndpoints.userDataEndpoint, {})
+    return this.http.get<UserData>(DatabaseEndpoints.userDataEndpoint, {});
   }
 
   userTournaments() {
-    return this.http.get<EventModel[]>(DatabaseEndpoints.userTournamentsEndpoint, {})
+    return this.http.get<EventModel[]>(DatabaseEndpoints.userTournamentsEndpoint, {});
+  }
+
+  createTournament(body){
+    return this.http.post(DatabaseEndpoints.tournamentsEndpoint, body);
   }
 }
