@@ -3,106 +3,79 @@
   <h1> Create Tournament </h1>
   <form [formGroup]="form" role="form">
 
-    <mat-horizontal-stepper (selectionChange)="initMap()">
-      <mat-step>
-        <ng-template matStepLabel>Tournament name</ng-template>
-        <mat-form-field class="input-element">
-          <mat-label>Name</mat-label>
-          <input matInput type="text" formControlName="tournamentName">
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </mat-step>
+    <mat-form-field class="input-element">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" formControlName="tournamentName">
+    </mat-form-field>
 
-      <mat-step>
-        <ng-template matStepLabel>Banner & Icon</ng-template>
-        <div class="input-element file-upload-div">
-          <button mat-raised-button (click)="iconFile.click()"> Pick icon</button>
-          <span class="file-label" *ngIf="tournamentIcon!==undefined"> {{tournamentIcon.name}}</span>
-          <span class="file-label" *ngIf="tournamentIcon===undefined"> Pick a file.</span>
-          <span class="file-label--requirements" *ngIf="tournamentIcon===undefined"> It has to be 200px x 200px</span>
-          <input #iconFile
-                 (change)="iconFileBrowser(iconFile)"
-                 type="file"
-                 accept="image/*"
-                 hidden>
-        </div>
+    <div class="input-element file-upload-div">
+      <button mat-raised-button (click)="iconFile.click()"> Pick icon</button>
+      <span class="file-label" *ngIf="tournamentIcon!==undefined"> {{tournamentIcon.name}}</span>
+      <span class="file-label" *ngIf="tournamentIcon===undefined"> Pick a file.</span>
+      <span class="file-label--requirements" *ngIf="tournamentIcon===undefined"> It has to be 200px x 200px</span>
+      <input #iconFile
+             (change)="iconFileBrowser(iconFile)"
+             type="file"
+             accept="image/*"
+             hidden>
+    </div>
 
-        <div class="input-element input-element--after-line file-upload-div">
-          <button mat-raised-button (click)="bannerFile.click()"> Pick banner</button>
-          <span class="file-label" *ngIf="tournamentBanner!==undefined"> {{tournamentBanner.name}}</span>
-          <span class="file-label" *ngIf="tournamentBanner===undefined"> Pick a file </span>
-          <span class="file-label--requirements" *ngIf="tournamentBanner===undefined"> It has to be 1920 x 400px</span>
-          <input class="file-input"
-                 #bannerFile
-                 (change)="bannerFileBrowser(bannerFile)"
-                 type="file"
-                 accept="image/*"
-                 hidden>
-        </div>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </mat-step>
+    <div class="input-element input-element--after-line file-upload-div">
+      <button mat-raised-button (click)="bannerFile.click()"> Pick banner</button>
+      <span class="file-label" *ngIf="tournamentBanner!==undefined"> {{tournamentBanner.name}}</span>
+      <span class="file-label" *ngIf="tournamentBanner===undefined"> Pick a file </span>
+      <span class="file-label--requirements" *ngIf="tournamentBanner===undefined"> It has to be 1920 x 400px</span>
+      <input class="file-input"
+             #bannerFile
+             (change)="bannerFileBrowser(bannerFile)"
+             type="file"
+             accept="image/*"
+             hidden>
+    </div>
 
-      <mat-step>
-        <ng-template matStepLabel>Location</ng-template>
-        <div class="map-div" id="map"></div>
-        <span>Selected location: {{placeID}}</span>
-        <input type="hidden" [value]="placeID" formControlName="locationID">
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </mat-step>
+    <br>
+    <h2>Select tournament location</h2>
+    <div class="map-div" id="map"></div>
+    <app-place-preview *ngIf="placeData" [placeObject]="placeData"></app-place-preview>
+    <input type="hidden" formControlName="locationID">
 
-      <mat-step>
-        <ng-template matStepLabel>Description</ng-template>
-        <editor [init]="tinyMceSettings" (onKeyPress)="descriptionChanged($event)" apiKey="3yehonyxa2vu4mcrt70hvsq3u5014t01hteazwtxmx3yxbek"></editor>
-        <input type="hidden" formControlName="tournamentDescription">
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </mat-step>
+    <h2>Description</h2>
+    <editor [init]="tinyMceSettings" (onKeyPress)="descriptionChanged($event)" apiKey="3yehonyxa2vu4mcrt70hvsq3u5014t01hteazwtxmx3yxbek"></editor>
+    <input type="hidden" formControlName="tournamentDescription">
 
-      <mat-step>
-        <ng-template matStepLabel>Dates</ng-template>
-        <div class="date-div">
-          <mat-form-field class="input-element">
-            <mat-label>Tournament start date</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="startTime">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker touchUi #picker></mat-datepicker>
+    <br>
+    <h2>Registration and Tournament  start & end</h2>
+    <div class="date-div">
+      <mat-form-field class="input-element">
+        <mat-label>Tournament start date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="startTime">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
 
-          </mat-form-field>
+      </mat-form-field>
 
-          <mat-form-field class="input-element">
-            <mat-label>Tournament end date</mat-label>
-            <input matInput [matDatepicker]="picker1" formControlName="endTime">
-            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker touchUi #picker1></mat-datepicker>
-          </mat-form-field>
+      <mat-form-field class="input-element">
+        <mat-label>Tournament end date</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="endTime">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker1></mat-datepicker>
+      </mat-form-field>
 
-          <mat-form-field class="input-element">
-            <mat-label>Registration start date</mat-label>
-            <input matInput [matDatepicker]="picker2" formControlName="registrationStartTime">
-            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker touchUi #picker2></mat-datepicker>
-          </mat-form-field>
+      <mat-form-field class="input-element">
+        <mat-label>Registration start date</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="registrationStartTime">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker2></mat-datepicker>
+      </mat-form-field>
 
-          <mat-form-field class="input-element">
-            <mat-label>Registration end date</mat-label>
-            <input matInput [matDatepicker]="picker3" formControlName="registrationEndTime">
-            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-            <mat-datepicker touchUi #picker3></mat-datepicker>
-          </mat-form-field>
-        </div>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-          <button mat-button (click)="submitForm()">Submit</button>
-          {{form.valid}}
-        </div>
-      </mat-step>
-    </mat-horizontal-stepper>
+      <mat-form-field class="input-element">
+        <mat-label>Registration end date</mat-label>
+        <input matInput [matDatepicker]="picker3" formControlName="registrationEndTime">
+        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker3></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <button mat-button (click)="submitForm()">Submit</button>
   </form>
 </mat-card>

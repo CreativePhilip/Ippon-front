@@ -13,6 +13,8 @@ import {GoogleAPIService} from "../../services/googleAPI/google-api.service";
 })
 export class CreateTournamentComponent implements OnInit {
   map: google.maps.Map;
+  service;
+
   form: FormGroup;
 
   public tournamentIcon: File;
@@ -21,9 +23,7 @@ export class CreateTournamentComponent implements OnInit {
   userData: UserData;
 
   placeID: string;
-  placeData: string;
-  placeLat: number;
-  placeLng: string;
+  placeData;
 
   tinyMceSettings = {
     height: 500,
@@ -46,7 +46,7 @@ export class CreateTournamentComponent implements OnInit {
   ngOnInit(): void {
     this.form = new  FormGroup({
       tournamentName: new FormControl('', [Validators.required]),
-      locationID: new FormControl('a', [Validators.required]),
+      locationID: new FormControl('', [Validators.required]),
       tournamentDescription: new FormControl('', [Validators.required]),
       bannerImage: new FormControl('', [Validators.required]),
       iconImage: new FormControl('', [Validators.required]),
@@ -62,6 +62,8 @@ export class CreateTournamentComponent implements OnInit {
         console.log(value)
       }
     );
+
+    this.initMap();
   }
 
    initMap() {
@@ -71,14 +73,25 @@ export class CreateTournamentComponent implements OnInit {
         zoom: 12
       });
       this.map.addListener('click',  async (event:google.maps.Place) => {
-        console.log("siema test");
         if(event.placeId) {
           this.placeID = event.placeId;
-          console.log("asking google api");
-          let placeDetails = await this.googleApi.getPlaceInformation(event.placeId).catch(reason => console.log(reason));
-          console.log(placeDetails);
+          this.form.controls.locationID.patchValue(this.placeID);
+
+          let query = {
+            placeId: this.placeID,
+            fields: ["name", "vicinity", "photos"]
+          }
+
+          //@ts-ignore
+          this.service.getDetails(query, (place, status) =>{
+            this.placeData = place;
+            console.log(place);
+          });
         }
       });
+
+      // @ts-ignore
+      this.service = new google.maps.places.PlacesService(this.map);
     }
   }
 
@@ -124,6 +137,7 @@ export class CreateTournamentComponent implements OnInit {
       data.append('banner', this.form.controls.bannerImage.value);
       data.append('start_time', `${startDate}T23:59`);
       data.append('end_time', `${endDate}T23:59`);
+      data.append('locationID', this.form.controls.locationID.value);
       data.append('registration_start_time', `${startDateRegistration}T23:59`);
       data.append('registration_end_time', `${endDateRegistration}T23:59`);
       data.append('event_owner', `${this.userData.id}`);

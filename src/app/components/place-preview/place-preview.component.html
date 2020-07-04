@@ -1,0 +1,8 @@
+<mat-card>
+  <h2>{{placeObject["name"]}}</h2>
+  <div class="sub_container">
+    <h3>{{placeObject["vicinity"]}}</h3>
+    <img [src]="placeObject['photos'][0].getUrl()">
+  </div>
+
+</mat-card>
