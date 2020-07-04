@@ -4,7 +4,6 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {DatabaseService} from "../../services/databaseConnection/database.service";
 import {UserData} from "../../services/databaseConnection/models/userData";
 import {Router} from "@angular/router";
-import {GoogleAPIService} from "../../services/googleAPI/google-api.service";
 
 @Component({
   selector: 'app-create-tournament',
@@ -40,8 +39,7 @@ export class CreateTournamentComponent implements OnInit {
   };
 
   constructor(private db: DatabaseService,
-              private googleApi: GoogleAPIService,
-              private router: Router) { }
+              private router: Router) {}
 
   ngOnInit(): void {
     this.form = new  FormGroup({

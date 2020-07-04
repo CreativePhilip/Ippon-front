@@ -37,4 +37,5 @@ describe('ProfileDataComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
