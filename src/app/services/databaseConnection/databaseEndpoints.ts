@@ -5,5 +5,5 @@ export class DatabaseEndpoints {
 
   public static userDataEndpoint = `${DatabaseEndpoints.rootURL}user-data/`;
   public static tournamentsEndpoint = `${DatabaseEndpoints.rootURL}events/`;
-  public static userTournamentsEndpoint = `${DatabaseEndpoints.rootURL}events/my_tournaments/`;
+  public static userTournamentsEndpoint = `${DatabaseEndpoints.rootURL}events/return_users_events/`;
 }

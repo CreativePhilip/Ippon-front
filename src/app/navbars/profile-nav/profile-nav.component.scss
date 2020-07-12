@@ -10,7 +10,7 @@ nav {
 
   background-color: $main-gray;
   height: 100vh;
-  width: max(5vw, 150px);
+  width: max(3vw, 100px);
 
   ul {
     display: flex;
@@ -31,7 +31,7 @@ nav {
 
     a {
       color: white;
-      font-size: 2em;
+      font-size: 1.5em;
 
       &:focus {
         outline: 0;
@@ -54,6 +54,9 @@ nav {
   fill: white;
   height: 4vw;
   width: 4vw;
+  min-height: 50px;
+  min-width: 50px;
+
   margin: 0 1rem;
 }
 

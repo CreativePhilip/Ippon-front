@@ -4,6 +4,12 @@
 main {
   display: flex;
   flex-direction: row;
+  margin-left: max(3vw, 100px);;
+}
+
+app-profile-nav {
+  position: fixed;
+  left: 0;
 }
 
 .profile-page {
