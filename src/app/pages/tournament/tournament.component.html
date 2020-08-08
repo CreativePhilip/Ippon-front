@@ -1,25 +1,26 @@
 <app-min-nav></app-min-nav>
 <main>
-  <img [src]="tournamentData?.banner" alt="Tournament banner" class="tournament-banner">
+  <img [src]="tournamentData?.banner" alt="Tournament banner" class="tournament-banner" *ngIf="tournamentDataIsValid">
 
   <div class="tournament-name">
     <h1>{{tournamentData?.name}}</h1>
-    <h3>starts in {{tournamentData?.start_time.toLocaleString()}}</h3>
+    <h3>starts soon</h3>
   </div>
 
 
   <div class="tournament-data">
     <div class="left-column">
       <img [src]="tournamentData?.icon" alt="Tournament icon">
-      <button (click)="ngOnInit()" mat-flat-button color="primary" class="results-button"> Results</button>
+      <button *ngIf="tournamentDataIsValid" (click)="ngOnInit()" mat-flat-button color="primary"
+              class="results-button"> Results</button>
     </div>
 
     <div class="center-column">
         <editor [initialValue]="tournamentData?.description" disabled="true" inline="true"></editor>
-        <button mat-raised-button class="register-button"> Register</button>
+        <button *ngIf="tournamentData.event_owner" mat-raised-button class="register-button"> Register</button>
     </div>
 
-    <div class="right-column">
+    <div class="right-column" *ngIf="tournamentDataIsValid">
       <h2> Time </h2>
       <h3>starts on the {{tournamentData?.start_time.toLocaleDateString()}}</h3>
       <h3>ends on the {{tournamentData?.end_time.toLocaleDateString()}}</h3>
