@@ -37,6 +37,7 @@ import {EditorModule} from "@tinymce/tinymce-angular";
 import {MatStepperModule} from "@angular/material/stepper";
 import { MatNativeDateModule } from '@angular/material/core';
 import { PlacePreviewComponent } from './components/place-preview/place-preview.component';
+import { TournamentComponent } from './pages/tournament/tournament.component';
 
 
 
@@ -53,7 +54,8 @@ import { PlacePreviewComponent } from './components/place-preview/place-preview.
     ProfileStaffComponent,
     AdminTournamentCardComponent,
     CreateTournamentComponent,
-    PlacePreviewComponent
+    PlacePreviewComponent,
+    TournamentComponent
   ],
   imports: [
     BrowserModule,

@@ -51,7 +51,7 @@ export class CreateTournamentComponent implements OnInit {
       startTime: new FormControl('', [Validators.required]),
       endTime: new FormControl('', [Validators.required]),
       registrationStartTime: new FormControl('', [Validators.required]),
-      registrationEndTime: new FormControl('', [Validators.required])
+      registrationEndTime: new FormControl('', [Validators.required]),
     });
 
     this.db.userData().subscribe(
@@ -135,7 +135,7 @@ export class CreateTournamentComponent implements OnInit {
       data.append('banner', this.form.controls.bannerImage.value);
       data.append('start_time', `${startDate}T23:59`);
       data.append('end_time', `${endDate}T23:59`);
-      data.append('locationID', this.form.controls.locationID.value);
+      data.append('locationID', this.placeID);
       data.append('registration_start_time', `${startDateRegistration}T23:59`);
       data.append('registration_end_time', `${endDateRegistration}T23:59`);
       data.append('event_owner', `${this.userData.id}`);

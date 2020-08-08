@@ -24,4 +24,8 @@ export class DatabaseService {
   createTournament(body){
     return this.http.post(DatabaseEndpoints.tournamentsEndpoint, body);
   }
+
+  tournament(id) {
+    return this.http.get<EventModel>(`${DatabaseEndpoints.tournamentsEndpoint}${id}`)
+  }
 }

@@ -1,0 +1,103 @@
+$main-content-margin: 5em;
+$separation-bar-thickness: 2px;
+
+.tournament-banner {
+  width: 100vw;
+  height: 10vh;
+
+  object-fit: cover;
+}
+
+.tournament-name {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  margin: 2em $main-content-margin;
+
+
+  h3 {
+    margin-left: auto;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+
+    background: black;
+    height: $separation-bar-thickness;
+    width: 100%;
+    bottom: -5px;
+    left: 0;
+  }
+}
+
+
+.tournament-data {
+  display: grid;
+  grid-template-columns: 15% 60% 25%;
+
+  margin-left: $main-content-margin;
+  margin-right: $main-content-margin;
+
+  .left-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    grid-column: 1;
+
+    .results-button {
+      margin-top: 20px;
+      width: 90%;
+    }
+
+    img {
+      $image-size: 15vh;
+      height: $image-size;
+      width: $image-size;
+
+      border-radius: 20%;
+    }
+  }
+
+  .center-column {
+    grid-column: 2;
+
+    padding: 1.5em;
+
+    .register-button {
+      margin-top: 1em;
+      background-color: #5CB85C;
+      width: 90%;
+    }
+  }
+
+  .right-column {
+    grid-column: 3;
+
+    .static-map {
+      border: black 2px solid;
+      border-radius: 20%;
+      margin: 1em auto 0 auto;
+    }
+
+    h2 {
+      position: relative;
+
+
+      &::after {
+        content: "";
+        background: black;
+        position: absolute;
+
+        height: $separation-bar-thickness;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+}
+
