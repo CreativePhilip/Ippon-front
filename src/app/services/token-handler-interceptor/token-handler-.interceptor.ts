@@ -28,7 +28,7 @@ export class TokenHandlerInterceptor implements HttpInterceptor, OnDestroy {
   }
 
   backendAPIInterception(request: HttpRequest<unknown>) {
-    if(this.authData.access != null) {
+    if(this.authData.access != null && !this.tokenUtils.isTokenExpired(this.authData.access)) {
       return request.clone({
         headers: request.headers
           .append("Authorization", `Bearer ${this.authData.access}`)
