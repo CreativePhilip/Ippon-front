@@ -8,9 +8,7 @@
         <h4 *ngIf="activeTournamentsCount==0">You don't have any active tournaments</h4>
         <div class="test" *ngFor="let t of tournaments">
           <app-admin-tournament-card
-            [tournamentName]="t.name"
-            [startDate]="t.start_time"
-            [registrationEndDate]="t.registration_end_time">
+            [tournament]="t">
           </app-admin-tournament-card>
         </div>
 

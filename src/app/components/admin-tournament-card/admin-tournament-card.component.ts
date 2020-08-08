@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {EventModel} from "../../services/databaseConnection/models/EventModel";
 
 @Component({
   selector: 'app-admin-tournament-card',
@@ -6,21 +7,19 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./admin-tournament-card.component.scss']
 })
 export class AdminTournamentCardComponent implements OnInit {
-  @Input() tournamentName: string;
-  @Input() startDate: string;
-  @Input() registrationEndDate: string;
+  @Input() tournament: EventModel;
 
   parsedStartDate;
   parsedRegistrationStartDate;
   constructor() { }
 
   ngOnInit(): void {
-  this.parseTime();
+    this.parseTime();
   }
 
   parseTime() {
-    this.parsedStartDate = new Date(this.startDate).toLocaleDateString();
-    this.parsedRegistrationStartDate = new Date(this.registrationEndDate).toLocaleDateString();
+    this.parsedStartDate = new Date(this.tournament.start_time).toLocaleDateString();
+    this.parsedRegistrationStartDate = new Date(this.tournament.registration_end_time).toLocaleDateString();
   }
 
 }

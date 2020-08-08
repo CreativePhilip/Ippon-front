@@ -1,8 +1,8 @@
 <mat-card>
-  <img src="https://placeimg.com/150/150/any" alt="tournament image" class="tournament-image">
+  <img [src]="tournament.icon" alt="tournament image" class="tournament-image">
 
   <div class="main-data">
-    <h1>{{ tournamentName }}</h1>
+    <h1>{{ tournament.name }}</h1>
     <br>
     <h4>Starting on: <span class="text-warn">{{ parsedStartDate }}</span></h4>
     <h4>Registration ends in: <span class="text-error">{{ parsedRegistrationStartDate }}</span></h4>
